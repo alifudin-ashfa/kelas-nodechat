@@ -15,6 +15,12 @@ io.on('connection', socket => {
   socket.on('newMessage', (msg) => {
     io.emit('newMessage', msg)
   })
+
+  // login
+  // mendeteksi informasi dari client side key, value
+  socket.on("loginUser", username => {
+    socket.emit('loginResponse', true)
+  })
 });
 
 http.listen(3000, () => {
