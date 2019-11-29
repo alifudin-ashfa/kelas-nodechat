@@ -647,7 +647,8 @@ ul.list-unstyled.chat {
 
 .danger {
   background-color: white;
-  color: #d3006e
+  color: #d3006e;
+  padding: 0 5px;
 }
 
 .form-control:focus {

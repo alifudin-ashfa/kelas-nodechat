@@ -5,9 +5,16 @@ $('#submit_name').submit(e => {
   e.preventDefault()
   const username = $('#username').val()
 
-  // kirim data username ke server
-  //dengan membuat key, value
-  socket.emit("loginUser", username)
+  // check username jika kosong 
+  if (!username) {
+    showValidate($('#username'))
+    $('.danger').removeClass('hidden')
+    $('.danger').text("username kosong")
+  } else {
+    // kirim data username ke server
+    //dengan membuat key, value
+    socket.emit("loginUser", username)
+  }
 })
 
 socket.on("loginResponse", status => {
@@ -16,3 +23,9 @@ socket.on("loginResponse", status => {
     $('#chatroom').removeClass('hidden')
   }
 })
+
+const showValidate = input => {
+  const alert = $(input).parent()
+
+  $(alert).addClass('alert-validate')
+}
