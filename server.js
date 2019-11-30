@@ -34,8 +34,8 @@ io.on('connection', socket => {
   })
 
   // chat message
-  socket.on('newMessage', msg => {
-    io.emit('newMassage', msg)
+  socket.on('newMessage', user => {
+    io.emit('newMassage', user)
   })
 });
 
