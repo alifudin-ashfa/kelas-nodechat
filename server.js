@@ -32,6 +32,11 @@ io.on('connection', socket => {
     // kirim data untuk kita sendiri
     socket.emit('loginResponse', true)
   })
+
+  // chat message
+  socket.on('newMessage', msg => {
+    io.emit('newMassage', msg)
+  })
 });
 
 http.listen(3000, () => {
