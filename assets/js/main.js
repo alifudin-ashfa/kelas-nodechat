@@ -28,6 +28,17 @@ socket.on("loginResponse", status => {
   }
 })
 
+// menampilkan list user inline
+socket.on("onlineUsers", usernames => {
+  $('.friend-list').empty()
+
+  usernames.map(username => {
+    $('.friend-list').append(`<li id="user_${username}" class="ml-1"
+    <span>${username}</span>
+    </li>`)
+  })
+})
+
 const showValidate = input => {
   const alert = $(input).parent()
 
