@@ -10,6 +10,10 @@ $('#submit_name').submit(e => {
     showValidate($('#username'))
     $('.danger').removeClass('hidden')
     $('.danger').text("username kosong")
+  } else if (/\s/.test(username)) {
+    showValidate($('#username'))
+    $('.danger').removeClass('hidden')
+    $('.danger').text("username mengandung spasi")
   } else {
     // kirim data username ke server
     //dengan membuat key, value
