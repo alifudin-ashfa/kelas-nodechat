@@ -37,6 +37,20 @@ io.on('connection', socket => {
   socket.on('newMessage', user => {
     io.emit('newMassage', user)
   })
+
+  socket.on('disconnect', () => {
+    // menghapus data user logout
+    const index = usernames.indexOf(users[socket.id])
+    if (users[socket.id]) {
+      // hapus user di data array (posisi array, jumlah yg dihapus)
+      usernames.splice(index, 1)
+    }
+
+    // hapus userdi data json
+    delete users[socket.id]
+
+    io.emit('onlineUsers', usernames)
+  })
 });
 
 http.listen(3000, () => {
